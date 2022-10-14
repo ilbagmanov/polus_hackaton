@@ -2,7 +2,8 @@
 # Deploy app
 
 git pull
-mvn clean install
-# shellcheck disable=SC2046
 kill $(lsof -t -i:8080)
-mvn spring-boot:run > /dev/null 2>&1 &
+nohup mvn clean install spring-boot:run &
+sleep 3
+echo "After a few second server will run"
+echo "Please, press ENTER to continue"
