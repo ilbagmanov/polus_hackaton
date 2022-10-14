@@ -5,27 +5,23 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
-import javax.validation.constraints.NotNull;
-import java.util.Map;
 
 @Entity
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class JobEntity {
+public class VehicleEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private String jobId;
+    private String id;
 
+    private String park;
+    private String characteristic;
+    private String model;
+    private String jobId;
     private Long startDate;
     private Long endDate;
-    private String status;
-    private Double lon;
-    private Double lat;
-    @ManyToOne
-    @JoinColumn(name="customerId", nullable=false)
-    private CustomerEntity customerId;
-    //TODO private Map<String, Integer> requiredVehicle;
     private String executorId;
+
 }

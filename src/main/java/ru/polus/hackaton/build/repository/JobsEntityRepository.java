@@ -38,7 +38,7 @@ public class JobsEntityRepository {
         jobEntity.setLat(entity.getLat());
         jobEntity.setLon(entity.getLon());
         jobEntity.setStatus(entity.getStatus());
-        jobEntity.setRequiredVehiclesRoles(entity.getRequiredVehiclesRoles());
+        //jobEntity.setRequiredVehiclesRoles(entity.getRequiredVehiclesRoles());
     }
 
     public List<JobEntity> getJobsEntityTable() {
