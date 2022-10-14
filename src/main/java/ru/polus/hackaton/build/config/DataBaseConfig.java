@@ -11,6 +11,7 @@ import java.util.List;
 @Configuration
 public class DataBaseConfig {
 
+
     @Bean(value = "jobsEntityTable")
     @Scope("singleton")
     public List<JobEntity> createJobsEntityTable() {

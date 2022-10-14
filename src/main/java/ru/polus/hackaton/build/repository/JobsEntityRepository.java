@@ -34,7 +34,7 @@ public class JobsEntityRepository {
         JobEntity jobEntity = getJobEntityById(entity.getJobId()).orElseThrow(IllegalArgumentException::new);
         jobEntity.setEndDate(entity.getEndDate());
         jobEntity.setStartDate(entity.getStartDate());
-        jobEntity.setCustomerId(entity.getCustomerId());
+        //jobEntity.setCustomerId(entity.getCustomerId());
         jobEntity.setLat(entity.getLat());
         jobEntity.setLon(entity.getLon());
         jobEntity.setStatus(entity.getStatus());
@@ -46,6 +46,7 @@ public class JobsEntityRepository {
     }
 
     public List<JobEntity> getJobsEntityByCustomerId(String id) {
-        return jobsEntityTable.stream().filter(x -> x.getCustomerId().equals(id)).collect(Collectors.toList());
+        return null;
+        //return jobsEntityTable.stream().filter(x -> x.getCustomerId().equals(id)).collect(Collectors.toList());
     }
 }

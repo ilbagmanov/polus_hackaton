@@ -1,11 +1,16 @@
 package ru.polus.hackaton.build.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.hibernate.annotations.OnDelete;
+import org.hibernate.annotations.OnDeleteAction;
+import org.springframework.web.bind.annotation.CrossOrigin;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
+import java.util.List;
 import java.util.Map;
 
 @Entity
@@ -23,9 +28,7 @@ public class JobEntity {
     private String status;
     private Double lon;
     private Double lat;
-    @ManyToOne
-    @JoinColumn(name="customerId", nullable=false)
-    private CustomerEntity customerId;
-    //TODO private Map<String, Integer> requiredVehicle;
+    //TODO: private CustomerEntity customer;
+    //TODO: private Map<String, Integer> requiredVehicle;
     private String executorId;
 }
