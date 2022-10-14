@@ -1,13 +1,13 @@
-package ru.polus.hackaton.build.rent;
+package ru.polus.hackaton.build;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class RentApplication {
+public class BuildApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(RentApplication.class, args);
+		SpringApplication.run(BuildApplication.class, args);
 	}
 
 }

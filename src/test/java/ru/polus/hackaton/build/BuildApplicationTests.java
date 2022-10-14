@@ -1,10 +1,10 @@
-package ru.polus.hackaton.build.rent;
+package ru.polus.hackaton.build;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class RentApplicationTests {
+class BuildApplicationTests {
 
 	@Test
 	void contextLoads() {
