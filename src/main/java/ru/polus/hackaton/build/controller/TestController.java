@@ -26,7 +26,7 @@ public class TestController {
         return ResponseEntity.ok(Collections.singletonMap("Status","success"));
     }
 
-    @PostMapping(value = "/api/signIn")
+    @PostMapping(value = "/signIn")
     public ResponseEntity<Map<String, String>> signIn(@Valid @RequestBody TestAuthForm form) {
         return authService.auth(form) ?
                 ResponseEntity.ok(Collections.singletonMap("executorId", USER_TOKEN))
