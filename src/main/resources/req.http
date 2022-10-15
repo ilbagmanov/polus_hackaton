@@ -1,0 +1,7 @@
+GET http://localhost:8080/api/vehicles/Погрузчик_Вилочный
+
+###
+
+GET http://localhost:8080/api/vehicles/type=Погрузчик_Вилочный/KOMATSU FD30T-17
+
+###

@@ -39,7 +39,7 @@ public class JobEntityRequest {
                 .status(this.status)
                 .lon(this.lon)
                 .lat(this.lat)
-                .customer(customerEntityRepository.getReferenceById(this.customerId))
+                //.customer(customerEntityRepository.getReferenceById(this.customerId))
                 .requiredVehicle(this.requiredVehicle)
                 .executorId(this.executorId)
                 .build();
