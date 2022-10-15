@@ -17,4 +17,8 @@ public interface JobRepository extends JpaRepository<Job, Long> {
 
     @Query("SELECT job FROM Job job WHERE job.executor.id = :executorId")
     Optional<List<Job>> getJobsByExecutorId(@Param("executorId") Long executorId);
+
+    @Query("SELECT job FROM Job job WHERE job.executor is not null")
+    Optional<List<Job>> getJobsWithExecutor();
+
 }

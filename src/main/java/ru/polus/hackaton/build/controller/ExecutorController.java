@@ -22,5 +22,10 @@ public class ExecutorController {
         return ResponseEntity.ok(jobRepository.getJobsByExecutorId(executorId));
     }
 
+    @GetMapping("jobs")
+    public ResponseEntity<?> getJobsWithExecutors() {
+        return ResponseEntity.ok(jobRepository.getJobsWithExecutor());
+    }
+
 
 }
