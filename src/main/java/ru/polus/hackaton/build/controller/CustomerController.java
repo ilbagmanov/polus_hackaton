@@ -90,7 +90,8 @@ public class CustomerController {
             throw new ValidationException("Model or type is not valid");
 
         job.setTypeVehicle(typeVehicle.get().get(0).getType());
-        job.setModelVehicle(typeVehicle.get().get(0).getModelVehicle().getModel());
+        if (model != null)
+            job.setModelVehicle(typeVehicle.get().get(0).getModelVehicle().getModel());
         return job;
     }
 
