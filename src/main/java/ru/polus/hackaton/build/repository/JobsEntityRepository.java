@@ -22,7 +22,7 @@ public class JobsEntityRepository {
     }
 
     public void createJobEntity(JobEntity entity) {
-        entity.setJobId(UUID.randomUUID().toString());
+        //entity.setJobId(UUID.randomUUID().toString());
         jobsEntityTable.add(entity);
     }
 
@@ -31,7 +31,8 @@ public class JobsEntityRepository {
     }
 
     private void update(JobEntity entity) {
-        JobEntity jobEntity = getJobEntityById(entity.getJobId()).orElseThrow(IllegalArgumentException::new);
+        //JobEntity jobEntity = getJobEntityById(entity.getJobId()).orElseThrow(IllegalArgumentException::new);
+        JobEntity jobEntity = new JobEntity();
         jobEntity.setEndDate(entity.getEndDate());
         jobEntity.setStartDate(entity.getStartDate());
         //jobEntity.setCustomerId(entity.getCustomerId());

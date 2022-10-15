@@ -1,28 +1,23 @@
-package ru.polus.hackaton.build.model;
+package ru.polus.hackaton.build.dto;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import javax.persistence.*;
 import java.util.List;
 
-@Entity
 @Data
-@AllArgsConstructor
 @NoArgsConstructor
-public class ExecutorEntity {
+@AllArgsConstructor
+public class ExecutorEntityRequest {
 
-    @Id
-    private Long executorId;
-
+    private String executorId;
     private String name;
     private String login;
     private String password;
     private Double lon;
     private Double lat;
     private String status;
-    @ManyToMany(fetch = FetchType.EAGER)
-    private List<ExecutorRoles> roles;
+    private List<String> roles;
     private String jobId;
 }

@@ -14,12 +14,12 @@ import java.util.List;
 public class CustomerEntity {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE)
-    private String customerId;
-
+    private Long customerId;
+    private String name;
     private String login;
     private String password;
 
-    @OneToMany(mappedBy = "jobId")
+    @OneToMany(mappedBy = "customer", fetch = FetchType.LAZY,
+            cascade = CascadeType.ALL)
     private List<JobEntity> jobs;
 }

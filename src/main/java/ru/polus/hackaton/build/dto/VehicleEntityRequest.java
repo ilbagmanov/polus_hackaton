@@ -1,20 +1,16 @@
-package ru.polus.hackaton.build.model;
+package ru.polus.hackaton.build.dto;
 
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import javax.persistence.*;
-
-@Entity
 @Data
-@AllArgsConstructor
 @NoArgsConstructor
-public class VehicleEntity {
+@AllArgsConstructor
+public class VehicleEntityRequest {
 
-    @Id
-    private Long id;
-
+    private String id;
     private String park;
     private String characteristic;
     private String model;
