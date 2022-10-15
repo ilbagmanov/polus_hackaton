@@ -11,19 +11,11 @@ import java.util.List;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class ExecutorEntity {
+public class Customer extends Account {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long executorId;
+    private Long id;
 
     private String name;
-    private String login;
-    private String password;
-    private Double lon;
-    private Double lat;
-    private String status;
-    @ManyToMany(fetch = FetchType.EAGER)
-    private List<ExecutorRoles> roles;
-    private String jobId;
 }

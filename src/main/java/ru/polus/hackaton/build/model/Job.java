@@ -12,22 +12,33 @@ import javax.persistence.*;
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-public class JobEntity {
+public class Job {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long jobId;
+    private Long id;
+
     private String title;
+
     private Long startDate;
+
     private Long endDate;
-    private String status;
+
     private Double lon;
+
     private Double lat;
+
+    private String status;
+
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "customer_id")
     private CustomerEntity customer;
+
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "required_vehicle_id")
-    private RequiredVehicle requiredVehicle;
-    private Long executorId;
+    private TypeVehicle typeVehicle;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "executor_id")
+    private Executor executor;
 }

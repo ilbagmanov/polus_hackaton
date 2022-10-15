@@ -1,25 +1,15 @@
 package ru.polus.hackaton.build.controller;
 
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.*;
-import ru.polus.hackaton.build.dto.JobEntityRequest;
-import ru.polus.hackaton.build.model.JobEntity;
-import ru.polus.hackaton.build.model.RequiredVehicle;
-import ru.polus.hackaton.build.repository.CustomerEntityRepository;
-import ru.polus.hackaton.build.repository.JobEntityRepository;
-import ru.polus.hackaton.build.repository.RequiredVehicleRepository;
-import ru.polus.hackaton.build.util.ResponseStatus;
-
-import java.util.List;
-import java.util.Map;
+import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
 @RequestMapping("customer")
 @RestController
 @CrossOrigin
 public class CustomerController {
 
-    @Autowired
+    /*@Autowired
     private JobEntityRepository jobEntityRepository;
     @Autowired
     private CustomerEntityRepository customerEntityRepository;
@@ -60,5 +50,5 @@ public class CustomerController {
     public ResponseEntity<?> getAllCustomerOrders(@PathVariable Long customerId){
         return ResponseEntity.ok(jobEntityRepository.getAllByCustomerId(customerId));
     }
-
+    */
 }

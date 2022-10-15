@@ -11,13 +11,12 @@ import javax.persistence.Id;
 
 @Entity
 @Data
-@AllArgsConstructor
 @NoArgsConstructor
-public class RequiredVehicle {
+@AllArgsConstructor
+public class Role {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private String characteristic;
-    private String model;
+    private String role;
 }
