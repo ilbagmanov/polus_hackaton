@@ -35,9 +35,11 @@ public class Job implements Serializable {
     @JoinColumn(name = "customer_id")
     private Customer customer;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "required_vehicle_id")
-    private TypeVehicle typeVehicle;
+    private String typeVehicle;
+
+    private String modelVehicle;
+
+    private String numberVehicle;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "executor_id")

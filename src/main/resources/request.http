@@ -2,9 +2,8 @@ POST localhost:8080/api/customer/job
 Content-Type: application/json
 
 {
-  "customerId": 1,
+  "customerId": 6,
   "endDate": 0,
-  "id": 0,
   "lat": 0,
   "lon": 0,
   "requiredVehicle": {

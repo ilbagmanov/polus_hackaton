@@ -27,7 +27,9 @@ public class DtoJob {
     private String status;
     private Long customerId;
     private Long executorId;
-    private TypeVehicle typeVehicle;
+    private String typeVehicle;
+    private String modelVehicle;
+    private String numberVehicle;
 
     public static DtoJob from(Job course) {
         DtoJob build = DtoJob.builder()
@@ -40,6 +42,8 @@ public class DtoJob {
                 .status(course.getStatus())
                 .customerId(course.getCustomer().getId())
                 .typeVehicle(course.getTypeVehicle())
+                .modelVehicle(course.getModelVehicle())
+                .numberVehicle(course.getNumberVehicle())
                 .build();
         if (course.getExecutor() != null)
             build.setExecutorId(course.getExecutor().getId());
