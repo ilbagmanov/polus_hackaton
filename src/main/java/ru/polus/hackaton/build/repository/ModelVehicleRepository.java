@@ -13,4 +13,6 @@ public interface ModelVehicleRepository extends JpaRepository<ModelVehicle, Long
     Optional<ModelVehicle> getModelVehicleByModel(String model);
 
     List<ModelVehicle> getAllByModel(String model);
+
+    ModelVehicle getAllById(Long id);
 }

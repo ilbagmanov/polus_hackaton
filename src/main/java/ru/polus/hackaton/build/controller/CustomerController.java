@@ -11,6 +11,8 @@ import ru.polus.hackaton.build.repository.CustomerRepository;
 import ru.polus.hackaton.build.repository.ExecutorRepository;
 import ru.polus.hackaton.build.repository.JobRepository;
 import ru.polus.hackaton.build.repository.TypeVehicleRepository;
+import ru.polus.hackaton.build.service.Service;
+import ru.polus.hackaton.build.service.TransportService;
 import ru.polus.hackaton.build.util.ResponseStatus;
 
 import javax.validation.Valid;
@@ -33,11 +35,15 @@ public class CustomerController {
     @Autowired
     private ExecutorRepository executorRepository;
 
+    @Autowired
+    private Service transportService;
+
     @PostMapping(value = "/job")
     public ResponseEntity<Map<String, String>> addJob(@RequestBody @Valid JobEntityRequest body) {
         try {
             Job job = mapToMandatoryJob(body);
             jobRepository.save(job);
+            transportService.algo(job);
         } catch (ValidationException e) {
             return ResponseEntity.status(401).body(Collections.singletonMap("Error", e.getMessage()));
         }
