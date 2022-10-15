@@ -65,9 +65,9 @@ public class CustomerController {
         return job;
     }
 
-    @DeleteMapping(value = "/job")
-    public ResponseEntity<?> deleteJob(@RequestBody Long id){
-        jobRepository.deleteById(id);
+    @DeleteMapping(value = "/job/{jobId}")
+    public ResponseEntity<?> deleteJob(@PathVariable Long jobId){
+        jobRepository.deleteById(jobId);
         return ResponseStatus.doSuccess();
     }
 
