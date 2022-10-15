@@ -3,8 +3,8 @@ package ru.polus.hackaton.build.controller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import ru.polus.hackaton.build.model.JobEntity;
-import ru.polus.hackaton.build.repository.JobsEntityRepository;
+import ru.polus.hackaton.build.dto.JobEntityRequest;
+import ru.polus.hackaton.build.repository.JobEntityRepository;
 import ru.polus.hackaton.build.util.ResponseStatus;
 
 import java.util.Map;
@@ -15,34 +15,34 @@ import java.util.Map;
 public class CustomerController {
 
     @Autowired
-    private JobsEntityRepository entityRepository;
+    private JobEntityRepository jobEntityRepository;
 
     @PostMapping(value = "/job")
-    public ResponseEntity<Map<String, String>> addOrder(@RequestBody JobEntity entity){
-        entityRepository.createJobEntity(entity);
+    public ResponseEntity<Map<String, String>> addOrder(@RequestBody JobEntityRequest entity){
+        jobEntityRepository.save(entity.mapper());
         return ResponseStatus.doSuccess();
     }
 
     @PutMapping(value = "/job")
-    public ResponseEntity<?> updateOrder(@RequestBody JobEntity entity){
-        entityRepository.createJobEntity(entity);
+    public ResponseEntity<?> updateOrder(@RequestBody JobEntityRequest entity){
+        jobEntityRepository.save(entity.mapper());
         return ResponseStatus.doSuccess();
     }
 
     @DeleteMapping(value = "/job")
-    public ResponseEntity<?> deleteOrder(@RequestBody String id){
-        entityRepository.deleteJobEntity(id);
+    public ResponseEntity<?> deleteOrder(@RequestBody Long id){
+        jobEntityRepository.deleteById(id);
         return ResponseStatus.doSuccess();
     }
 
     @GetMapping(value = "/jobs")
     public ResponseEntity<?> getAllOrders(){
-        return ResponseEntity.ok(entityRepository.getJobsEntityTable());
+        return ResponseEntity.ok(jobEntityRepository.findAll());
     }
 
     @GetMapping(value = "/jobs/{customerId}")
-    public ResponseEntity<?> getAllCustomerOrders(@PathVariable String customerId){
-        return ResponseEntity.ok(entityRepository.getJobsEntityByCustomerId(customerId));
+    public ResponseEntity<?> getAllCustomerOrders(@PathVariable Long customerId){
+        return ResponseEntity.ok(jobEntityRepository.getAllByCustomerId(customerId));
     }
 
 }

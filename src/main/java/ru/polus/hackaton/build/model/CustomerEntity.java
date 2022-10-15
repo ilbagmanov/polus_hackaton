@@ -14,6 +14,7 @@ import java.util.List;
 public class CustomerEntity {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long customerId;
     private String name;
     private String login;

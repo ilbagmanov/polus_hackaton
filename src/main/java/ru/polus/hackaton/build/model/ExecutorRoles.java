@@ -15,6 +15,7 @@ import javax.persistence.Id;
 @AllArgsConstructor
 public class ExecutorRoles {
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     private String role;
