@@ -20,9 +20,8 @@ public class Executor extends Account implements Serializable {
 
     private String name;
 
-    private Double lon;
-
-    private Double lat;
+    @OneToOne
+    private ModelVehicle modelVehicle;
 
     @ManyToMany(fetch = FetchType.EAGER)
     private List<Role> roles;

@@ -56,13 +56,14 @@ public class TestController {
                 String model = inp[2];
                 String vehicleNumber = inp[3];
                 Optional<ModelVehicle> modelVehicle = modelVehicleRepository.getModelVehicleByModel(model);
-                ModelVehicle modelVehicleObject = modelVehicle.orElseGet(() -> modelVehicleRepository.save(new ModelVehicle(null, model)));
+                ModelVehicle modelVehicleObject = modelVehicle.orElseGet(() -> modelVehicleRepository.save(new ModelVehicle(null, model, 0D, 0D,
+                                                                                                                            null)));
 
                 TypeVehicle vehicle = TypeVehicle.builder()
-                        .vehicleNumber(vehicleNumber)
-                        .type(type)
-                        .modelVehicle(modelVehicleObject)
-                        .build();
+                                                 .vehicleNumber(vehicleNumber)
+                                                 .type(type)
+                                                 .modelVehicle(modelVehicleObject)
+                                                 .build();
                 typeVehicleRepository.save(vehicle);
             }
         } catch (Exception e) {
