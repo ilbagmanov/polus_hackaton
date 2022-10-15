@@ -23,11 +23,11 @@ public class JobEntity {
     private String status;
     private Double lon;
     private Double lat;
-    @ManyToOne(fetch = FetchType.LAZY, optional = false)
-    @JoinColumn(name = "customer_id", nullable = true)
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "customer_id")
     private CustomerEntity customer;
-    @ManyToOne(fetch = FetchType.LAZY, optional = false)
-    @JoinColumn(name = "required_vehicle_id", nullable = true)
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "required_vehicle_id")
     private RequiredVehicle requiredVehicle;
     private Long executorId;
 }

@@ -1,0 +1,26 @@
+POST localhost:8080/api/customer/job
+Content-Type: application/json
+
+{
+  "startDate": "1665323342",
+  "endDate": "1665406405",
+  "status": "new_task",
+  "lon": 56.868903,
+  "lat": 42.035278,
+  "customerId": 1,
+  "requiredVehicle": {
+    "characteristic": "Погрузчик_Вилочный_Диз_3т/6м",
+    "model": "KOMATSU FD30T-17"
+  }
+}
+
+
+
+###
+
+POST 45.12.6.133:8080
+Content-Type: application/json
+
+{
+}
+
