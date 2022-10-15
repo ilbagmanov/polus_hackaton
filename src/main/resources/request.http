@@ -1,21 +1,20 @@
-POST 45.12.6.133:8080/api/customer/job
+POST localhost:8080/api/customer/job
 Content-Type: application/json
 
 {
-  "startDate": "1665323342",
-  "endDate": "1665406405",
-  "status": "new_task",
-  "title": "hackatoooon",
-  "executorId": 1,
-  "lon": 56.868903,
-  "lat": 42.035278,
   "customerId": 1,
+  "endDate": 0,
+  "id": 0,
+  "lat": 0,
+  "lon": 0,
   "requiredVehicle": {
-    "characteristic": "Погрузчик_Вилочный_Диз_3т/6м",
-    "model": "KOMATSU FD30T-17"
-  }
+    "type": "Автовышка (28 м)",
+    "model": "Чайка Сервис 2784SG"
+  },
+  "startDate": 0,
+  "status": "string",
+  "title": "string"
 }
-
 
 
 ###
@@ -24,19 +23,19 @@ PUT localhost:8080/api/customer/job
 Content-Type: application/json
 
 {
-  "jobId": 5,
-  "startDate": "1665323342",
-  "endDate": "1665406405",
-  "status": "new_task",
-  "title": "hackatoooon",
-  "executorId": 1,
-  "lon": 56.868903,
-  "lat": 42.035278,
   "customerId": 1,
+  "endDate": 0,
+  "executorId": 0,
+  "id": 1,
+  "lat": 0,
+  "lon": 0,
   "requiredVehicle": {
-    "characteristic": "Погрузчик_Вилочный_Диз_3т/6м",
+    "type": "Погрузчик_Вилочный_Диз_3т/6м",
     "model": "KOMATSU FD30T-17"
-  }
+  },
+  "startDate": 0,
+  "status": "string",
+  "title": "string"
 }
 
 ###
@@ -64,3 +63,7 @@ Content-Type: application/json
 
 ###
 GET localhost:8080/api/updateVehicles
+
+###
+
+GET localhost:8080/api/customer/jobs

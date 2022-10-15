@@ -1,8 +1,11 @@
 package ru.polus.hackaton.build.controller;
 
+import com.fasterxml.jackson.core.JsonFactory;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import ru.polus.hackaton.build.dto.DtoJob;
 import ru.polus.hackaton.build.dto.JobEntityRequest;
 import ru.polus.hackaton.build.model.Job;
 import ru.polus.hackaton.build.model.TypeVehicle;
@@ -13,6 +16,7 @@ import ru.polus.hackaton.build.repository.TypeVehicleRepository;
 import ru.polus.hackaton.build.util.ResponseStatus;
 
 import javax.validation.Valid;
+import java.util.Collections;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
@@ -60,8 +64,8 @@ public class CustomerController {
                 .build();
         String type = body.getRequiredVehicle().getOrDefault("type", "ANY");
         String model = body.getRequiredVehicle().getOrDefault("model", "ANY");
-        Optional<TypeVehicle> typeVehicle = typeVehicleRepository.getTypeVehicleByTypeAndModelVehicle_Model(type, model);
-        typeVehicle.ifPresent(job::setTypeVehicle);
+        Optional<List<TypeVehicle>> typeVehicle = typeVehicleRepository.getAllTypeVehicles(type, model);
+        typeVehicle.ifPresent(typeVehicles -> job.setTypeVehicle(typeVehicles.get(0)));
         return job;
     }
 
