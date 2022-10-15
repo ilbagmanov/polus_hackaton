@@ -61,3 +61,6 @@ Content-Type: application/json
   "password": "0000",
   "type": "customer"
 }
+
+###
+GET localhost:8080/api/updateVehicles

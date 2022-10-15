@@ -20,6 +20,8 @@ public class TypeVehicle {
 
     private String type;
 
+    private String vehicleNumber;
+
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "model_id")
     private ModelVehicle modelVehicle;
