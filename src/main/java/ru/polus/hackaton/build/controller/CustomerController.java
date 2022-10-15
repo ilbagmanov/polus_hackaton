@@ -11,6 +11,7 @@ import ru.polus.hackaton.build.repository.JobEntityRepository;
 import ru.polus.hackaton.build.repository.RequiredVehicleRepository;
 import ru.polus.hackaton.build.util.ResponseStatus;
 
+import java.util.List;
 import java.util.Map;
 
 @RequestMapping("customer")
@@ -46,13 +47,13 @@ public class CustomerController {
     @DeleteMapping(value = "/job")
     public ResponseEntity<?> deleteOrder(@RequestBody Long id){
         jobEntityRepository.deleteById(id);
-
         return ResponseStatus.doSuccess();
     }
 
     @GetMapping(value = "/jobs")
     public ResponseEntity<?> getAllOrders(){
-        return ResponseEntity.ok(jobEntityRepository.findAll());
+        List<JobEntity> all = jobEntityRepository.findAll();
+        return ResponseEntity.ok(all);
     }
 
     @GetMapping(value = "/jobs/{customerId}")
