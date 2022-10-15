@@ -11,16 +11,18 @@ import java.util.List;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class CustomerEntity {
+public class Executor extends Account {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long customerId;
-    private String name;
-    private String login;
-    private String password;
+    private Long id;
 
-    @OneToMany(mappedBy = "customer", fetch = FetchType.LAZY,
-            cascade = CascadeType.ALL)
-    private List<JobEntity> jobs;
+    private String name;
+
+    private Double lon;
+
+    private Double lat;
+
+    @ManyToMany(fetch = FetchType.EAGER)
+    private List<Role> roles;
 }
