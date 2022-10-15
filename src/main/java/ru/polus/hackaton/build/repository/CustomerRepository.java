@@ -7,4 +7,5 @@ import ru.polus.hackaton.build.model.Customer;
 @Repository
 public interface CustomerRepository extends JpaRepository<Customer, Long> {
 
+    Customer getById(Long customerId);
 }

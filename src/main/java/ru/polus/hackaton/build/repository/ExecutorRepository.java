@@ -6,4 +6,6 @@ import ru.polus.hackaton.build.model.Executor;
 
 @Repository
 public interface ExecutorRepository extends JpaRepository<Executor, Long> {
+
+    Executor getById(Long executorId);
 }
