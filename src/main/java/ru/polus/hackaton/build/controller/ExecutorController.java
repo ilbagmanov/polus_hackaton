@@ -7,8 +7,12 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import ru.polus.hackaton.build.model.Executor;
+import ru.polus.hackaton.build.model.Job;
 import ru.polus.hackaton.build.repository.ExecutorRepository;
 import ru.polus.hackaton.build.repository.JobRepository;
+
+import java.util.List;
+import java.util.Optional;
 
 @RequestMapping("executor")
 @RestController
@@ -24,7 +28,8 @@ public class ExecutorController {
 
     @GetMapping("jobs")
     public ResponseEntity<?> getJobsWithExecutors() {
-        return ResponseEntity.ok(jobRepository.getJobsWithExecutor());
+        Optional<List<Job>> jobsWithExecutor = jobRepository.getJobsWithExecutor();
+        return ResponseEntity.ok(jobsWithExecutor);
     }
 
 

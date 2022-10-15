@@ -46,7 +46,7 @@ public class CustomerController {
         Job job = mapToMandatoryJob(body);
         job.setId(body.getId());
         if (body.getExecutorId() != null)
-            job.setExecutor(executorRepository.getById(body.getCustomerId()));
+            job.setExecutor(executorRepository.getById(body.getExecutorId()));
         jobRepository.save(job);
         return ResponseStatus.doSuccess();
     }

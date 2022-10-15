@@ -69,7 +69,7 @@ GET localhost:8080/api/updateVehicles
 GET localhost:8080/api/customer/jobs
 
 ###
-GET localhost:8080/api/executor/jobs/3
+GET 45.12.6.133:8080/api/executor/jobs/3
 
 ###
 GET localhost:8080/api/executor/jobs
