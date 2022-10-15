@@ -1,4 +1,4 @@
-POST localhost:8080/api/customer/job
+POST 45.12.6.133:8080/api/customer/job
 Content-Type: application/json
 
 {
@@ -41,7 +41,6 @@ Content-Type: application/json
 
 ###
 DELETE localhost:8080/api/customer/job
-Content-Type: application/json
 
 {
  "id": 4
