@@ -49,3 +49,15 @@ DELETE localhost:8080/api/customer/job
 ###
 GET 45.12.6.133:8080/api/customer/jobs
 
+###
+GET localhost:8080/api/addCustomer
+
+###
+POST localhost:8080/api/signIn
+Content-Type: application/json
+
+{
+  "login": "customer0",
+  "password": "0000",
+  "type": "customer"
+}

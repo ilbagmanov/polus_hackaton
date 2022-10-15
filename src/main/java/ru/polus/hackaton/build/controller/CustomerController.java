@@ -1,54 +1,87 @@
 package ru.polus.hackaton.build.controller;
 
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
+import ru.polus.hackaton.build.dto.JobEntityRequest;
+import ru.polus.hackaton.build.model.Job;
+import ru.polus.hackaton.build.model.TypeVehicle;
+import ru.polus.hackaton.build.repository.CustomerRepository;
+import ru.polus.hackaton.build.repository.ExecutorRepository;
+import ru.polus.hackaton.build.repository.JobRepository;
+import ru.polus.hackaton.build.repository.TypeVehicleRepository;
+import ru.polus.hackaton.build.util.ResponseStatus;
+
+import javax.validation.Valid;
+import java.util.List;
+import java.util.Map;
+import java.util.Optional;
 
 @RequestMapping("customer")
 @RestController
-@CrossOrigin
 public class CustomerController {
 
-    /*@Autowired
-    private JobEntityRepository jobEntityRepository;
     @Autowired
-    private CustomerEntityRepository customerEntityRepository;
+    private JobRepository jobRepository;
     @Autowired
-    private RequiredVehicleRepository requiredVehicleRepository;
+    private CustomerRepository customerRepository;
+    @Autowired
+    private TypeVehicleRepository typeVehicleRepository;
+    @Autowired
+    private ExecutorRepository executorRepository;
 
     @PostMapping(value = "/job")
-    public ResponseEntity<Map<String, String>> addOrder(@RequestBody JobEntityRequest entity){
-        JobEntity jb = entity.mapper();
-        jb.setCustomer(customerEntityRepository.getReferenceById(entity.getCustomerId()));
-        jb.setRequiredVehicle(requiredVehicleRepository.getRequiredVehicleByCharacteristicAndModel(entity.getRequiredVehicle().getCharacteristic(), entity.getRequiredVehicle().getModel()));
-        jobEntityRepository.save(jb);
+    public ResponseEntity<Map<String, String>> addJob(@RequestBody @Valid JobEntityRequest body){
+        Job job = mapToMandatoryJob(body);
+        jobRepository.save(job);
         return ResponseStatus.doSuccess();
     }
 
     @PutMapping(value = "/job")
-    public ResponseEntity<?> updateOrder(@RequestBody JobEntityRequest entity){
-        JobEntity jb = entity.mapper();
-        jb.setCustomer(customerEntityRepository.getReferenceById(entity.getCustomerId()));
-        jb.setRequiredVehicle(requiredVehicleRepository.getRequiredVehicleByCharacteristicAndModel(entity.getRequiredVehicle().getCharacteristic(), entity.getRequiredVehicle().getModel()));
-        jobEntityRepository.save(jb);
+    public ResponseEntity<?> updateJob(@RequestBody @Valid JobEntityRequest body){
+        Job job = mapToMandatoryJob(body);
+        job.setId(body.getId());
+        if (body.getExecutorId() != null)
+            job.setExecutor(executorRepository.getById(body.getCustomerId()));
+        jobRepository.save(job);
         return ResponseStatus.doSuccess();
     }
 
+    public Job mapToMandatoryJob(JobEntityRequest body) {
+        Job job = Job.builder()
+                .startDate(body.getStartDate())
+                .endDate(body.getEndDate())
+                .lat(body.getLat())
+                .lon(body.getLon())
+                .customer(customerRepository.getById(body.getCustomerId()))
+                .executor(null)
+                .title(body.getTitle())
+                .status(body.getStatus())
+                .build();
+        String type = body.getRequiredVehicle().getOrDefault("type", "ANY");
+        String model = body.getRequiredVehicle().getOrDefault("model", "ANY");
+        Optional<TypeVehicle> typeVehicle = typeVehicleRepository.getTypeVehicleByTypeAndModelVehicle_Model(type, model);
+        typeVehicle.ifPresent(job::setTypeVehicle);
+        return job;
+    }
+
     @DeleteMapping(value = "/job")
-    public ResponseEntity<?> deleteOrder(@RequestBody Long id){
-        jobEntityRepository.deleteById(id);
+    public ResponseEntity<?> deleteJob(@RequestBody Long id){
+        jobRepository.deleteById(id);
         return ResponseStatus.doSuccess();
     }
 
     @GetMapping(value = "/jobs")
-    public ResponseEntity<?> getAllOrders(){
-        List<JobEntity> all = jobEntityRepository.findAll();
-        return ResponseEntity.ok(all);
+    public ResponseEntity<?> getAllJobs(){
+        return ResponseEntity.ok(jobRepository.findAll());
     }
 
     @GetMapping(value = "/jobs/{customerId}")
     public ResponseEntity<?> getAllCustomerOrders(@PathVariable Long customerId){
-        return ResponseEntity.ok(jobEntityRepository.getAllByCustomerId(customerId));
+        Optional<List<Job>> list = jobRepository.getAllByCustomer_Id(customerId);
+        if (list.isPresent())
+            return ResponseEntity.ok(list.get());
+        else
+            return ResponseStatus.doFailed();
     }
-    */
 }
